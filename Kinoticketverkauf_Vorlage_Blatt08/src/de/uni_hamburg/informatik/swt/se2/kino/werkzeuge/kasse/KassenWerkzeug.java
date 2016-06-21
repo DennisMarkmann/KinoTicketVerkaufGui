@@ -16,7 +16,7 @@ import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.vorstellungsauswaehler.V
  * Das Kassenwerkzeug. Mit diesem Werkzeug kann die Benutzerin oder der Benutzer
  * eine Vorstellung auswählen und Karten für diese Vorstellung verkaufen und
  * stornieren.
- * 
+ *
  * @author SE2-Team
  * @version SoSe 2016
  */
@@ -35,9 +35,9 @@ public class KassenWerkzeug
 
     /**
      * Initialisiert das Kassenwerkzeug.
-     * 
+     *
      * @param kino das Kino, mit dem das Werkzeug arbeitet.
-     * 
+     *
      * @require kino != null
      */
     public KassenWerkzeug(Kino kino)
@@ -80,55 +80,14 @@ public class KassenWerkzeug
         });
 
         _vorstellungAuswaehlWerkzeug
-                .registriereBeobachter(new SubwerkzeugObserver()
-                {
-                    @Override
-                    public void reagiereAufAenderung()
-                    {
-                        setzeAusgewaehlteVorstellung();
-                    }
-                });
-    }
-
-    /**
-     * Fügt die Funktionalitat zum Beenden-Button hinzu.
-     */
-    private void registriereUIAktionen()
-    {
-        _ui.getBeendenButton().addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
+            .registriereBeobachter(new SubwerkzeugObserver()
             {
-                reagiereAufBeendenButton();
-            }
-        });
-    }
-
-    /**
-     * Setzt den in diesem Werkzeug angezeigten Tagesplan basierend auf dem
-     * derzeit im DatumsAuswahlWerkzeug ausgewählten Datum.
-     */
-    private void setzeTagesplanFuerAusgewaehltesDatum()
-    {
-        Tagesplan tagesplan = _kino.getTagesplan(getAusgewaehltesDatum());
-        _vorstellungAuswaehlWerkzeug.setTagesplan(tagesplan);
-    }
-
-    /**
-     * Passt die Anzeige an, wenn eine andere Vorstellung gewählt wurde.
-     */
-    private void setzeAusgewaehlteVorstellung()
-    {
-        _platzVerkaufsWerkzeug.setVorstellung(getAusgewaehlteVorstellung());
-    }
-
-    /**
-     * Beendet die Anwendung.
-     */
-    private void reagiereAufBeendenButton()
-    {
-        _ui.schliesseFenster();
+                @Override
+                public void reagiereAufAenderung()
+                {
+                    setzeAusgewaehlteVorstellung();
+                }
+            });
     }
 
     /**
@@ -146,5 +105,47 @@ public class KassenWerkzeug
     private Vorstellung getAusgewaehlteVorstellung()
     {
         return _vorstellungAuswaehlWerkzeug.getAusgewaehlteVorstellung();
+    }
+
+    /**
+     * Beendet die Anwendung.
+     */
+    private void reagiereAufBeendenButton()
+    {
+        _ui.schliesseFenster();
+    }
+
+    /**
+     * Fügt die Funktionalitat zum Beenden-Button hinzu.
+     */
+    private void registriereUIAktionen()
+    {
+        _ui.getBeendenButton()
+            .addActionListener(new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    reagiereAufBeendenButton();
+                }
+            });
+    }
+
+    /**
+     * Passt die Anzeige an, wenn eine andere Vorstellung gewählt wurde.
+     */
+    private void setzeAusgewaehlteVorstellung()
+    {
+        _platzVerkaufsWerkzeug.setVorstellung(getAusgewaehlteVorstellung());
+    }
+
+    /**
+     * Setzt den in diesem Werkzeug angezeigten Tagesplan basierend auf dem
+     * derzeit im DatumsAuswahlWerkzeug ausgewählten Datum.
+     */
+    private void setzeTagesplanFuerAusgewaehltesDatum()
+    {
+        Tagesplan tagesplan = _kino.getTagesplan(getAusgewaehltesDatum());
+        _vorstellungAuswaehlWerkzeug.setTagesplan(tagesplan);
     }
 }

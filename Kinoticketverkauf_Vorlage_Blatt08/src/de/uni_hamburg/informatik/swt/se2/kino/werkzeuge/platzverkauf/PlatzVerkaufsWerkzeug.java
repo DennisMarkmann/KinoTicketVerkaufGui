@@ -7,7 +7,7 @@ import java.util.Set;
 
 import javax.swing.JPanel;
 
-import de.uni_hamburg.informatik.swt.se2.kino.bahrzahlung.BarzahlUI;
+import de.uni_hamburg.informatik.swt.se2.kino.barzahlung.BarZahlWerkzeug;
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Platz;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Kinosaal;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Vorstellung;
@@ -29,7 +29,7 @@ public class PlatzVerkaufsWerkzeug
 
     private PlatzVerkaufsWerkzeugUI _ui;
 
-    private BarzahlUI _bahrzahlUi;
+    private BarZahlWerkzeug _barzahlWerkzeug;
 
     /**
      * Initialisiert das PlatzVerkaufsWerkzeug.
@@ -94,10 +94,9 @@ public class PlatzVerkaufsWerkzeug
      */
     private void fuehreBarzahlungDurch()
     {
-        //TODO replace
+        //TODO implement new stuff
         verkaufePlaetze(_vorstellung);
-        _bahrzahlUi = new BarzahlUI();
-        //TODO open window
+        _barzahlWerkzeug = new BarZahlWerkzeug();
     }
 
     /**
