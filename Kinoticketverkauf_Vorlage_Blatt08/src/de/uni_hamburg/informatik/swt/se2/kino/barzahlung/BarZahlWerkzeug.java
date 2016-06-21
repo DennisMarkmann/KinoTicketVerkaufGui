@@ -10,18 +10,17 @@ public class BarZahlWerkzeug
 
     private BarZahlWerkzeugUI _barzahlUi;
     private Vorstellung _vorstellung;
-    private int _preis;
+    private int _bezahlterBetrag;
 
     public BarZahlWerkzeug(Vorstellung vorstellung)
     {
-        createUI();
         _vorstellung = vorstellung;
+        createUI();
     }
 
-    private int berechneDifferenz(int bezahlterBetrag)
+    private int berechneDifferenz()
     {
-        return bezahlterBetrag - _preis;
-
+        return _vorstellung.getPreis() - _bezahlterBetrag;
     }
 
     private void createUI()
@@ -29,22 +28,30 @@ public class BarZahlWerkzeug
         _barzahlUi = new BarZahlWerkzeugUI(0);
     }
 
-    public void fuehreBarZahlungDurch()
+    public void fuehreBarZahlungDurch(int bezahlterBetrag)
     {
-        //TODO
-        istBetragGueltig();
+        _bezahlterBetrag += bezahlterBetrag;
+        if (berechneDifferenz() == 0)
+        {
+
+        }
+        //TODO berechneDifferenz
     }
 
     private boolean istBetragGueltig()
     {
-        return false;
-        //TODO dateityp korrekt, feld nicht leer
+        int betrag = _barzahlUi.getBetrag();
+        if (betrag == 0)
+        {
+            return false;
+        }
+        //TODO betragString type int
+        return true;
     }
 
-    private boolean pruefeAllesBezahlt()
+    private boolean pruefeIstAllesBezahlt()
     {
-        return false;
-
+        return berechneDifferenz() == 0;
     }
 
     /**
@@ -58,7 +65,7 @@ public class BarZahlWerkzeug
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    //TODO
+                    fuehreBarZahlungDurch(_barzahlUi.getBetrag());
                 }
             });
 
@@ -68,7 +75,7 @@ public class BarZahlWerkzeug
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    //TODO
+                    _barzahlUi.dispose();
                 }
             });
     }
