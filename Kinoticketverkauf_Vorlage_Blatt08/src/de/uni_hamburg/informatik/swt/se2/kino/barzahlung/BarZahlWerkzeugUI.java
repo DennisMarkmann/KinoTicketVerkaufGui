@@ -15,7 +15,7 @@ public class BarZahlWerkzeugUI extends JFrame
     private JButton _okayButton;
     private JButton _abbrechenButton;
 
-    public BarZahlWerkzeugUI(int preis)
+    BarZahlWerkzeugUI(int preis)
     {
         _preisLabel = new JLabel();
         _betragField = new JTextField();
@@ -34,7 +34,7 @@ public class BarZahlWerkzeugUI extends JFrame
 
     }
 
-    public JButton getAbbrechenButton()
+    JButton getAbbrechenButton()
     {
         return _abbrechenButton;
     }
@@ -44,7 +44,7 @@ public class BarZahlWerkzeugUI extends JFrame
         return _betragField.getText();
     }
 
-    public JButton getOkayButton()
+    JButton getOkayButton()
     {
         return _okayButton;
     }

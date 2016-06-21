@@ -31,16 +31,19 @@ public class BarZahlWerkzeug
 
     public void fuehreBarZahlungDurch()
     {
+        //TODO
         istBetragGueltig();
     }
 
-    private void istBetragGueltig()
+    private boolean istBetragGueltig()
     {
+        return false;
         //TODO betrag kleiner Preis, dateityp korrekt, feld nicht leer
     }
 
-    private void pruefeAllesBezahlt()
+    private boolean pruefeAllesBezahlt()
     {
+        return false;
 
     }
 
