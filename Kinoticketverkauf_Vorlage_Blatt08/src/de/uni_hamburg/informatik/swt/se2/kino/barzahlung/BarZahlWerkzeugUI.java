@@ -10,23 +10,43 @@ public class BarZahlWerkzeugUI extends JFrame
     private static final long serialVersionUID = 4057874294977034472L;
 
     private JLabel _preisLabel;
-    private JTextField _betragLabel;
+    private JTextField _betragField;
     private JLabel _restLabel;
     private JButton _okayButton;
     private JButton _abbrechenButton;
 
-    public BarZahlWerkzeugUI()
+    public BarZahlWerkzeugUI(int preis)
     {
         _preisLabel = new JLabel();
-        _betragLabel = new JTextField();
+        _betragField = new JTextField();
         _restLabel = new JLabel();
         _okayButton = new JButton();
         _abbrechenButton = new JButton();
+
+        this.setSize(500, 500);
+        this.setVisible(true);
+
+        //TODO
     }
 
-    private void aktualisiereRestBetrag()
+    void aktualisiereRestBetrag()
     {
 
+    }
+
+    public JButton getAbbrechenButton()
+    {
+        return _abbrechenButton;
+    }
+
+    String getBetrag()
+    {
+        return _betragField.getText();
+    }
+
+    public JButton getOkayButton()
+    {
+        return _okayButton;
     }
 
 }

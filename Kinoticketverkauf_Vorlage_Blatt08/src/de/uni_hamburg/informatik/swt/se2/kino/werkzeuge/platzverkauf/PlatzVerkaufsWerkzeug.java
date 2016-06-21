@@ -96,7 +96,7 @@ public class PlatzVerkaufsWerkzeug
     {
         //TODO implement new stuff
         verkaufePlaetze(_vorstellung);
-        _barzahlWerkzeug = new BarZahlWerkzeug();
+        _barzahlWerkzeug = new BarZahlWerkzeug(_vorstellung);
     }
 
     /**
