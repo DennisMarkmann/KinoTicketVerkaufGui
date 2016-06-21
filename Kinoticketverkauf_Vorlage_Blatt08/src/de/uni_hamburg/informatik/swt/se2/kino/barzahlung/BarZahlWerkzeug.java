@@ -15,6 +15,7 @@ public class BarZahlWerkzeug
     public BarZahlWerkzeug(Vorstellung vorstellung)
     {
         _vorstellung = vorstellung;
+        registriereUIAktionen();
         createUI();
     }
 
@@ -28,9 +29,10 @@ public class BarZahlWerkzeug
         _barzahlUi = new BarZahlWerkzeugUI(0);
     }
 
-    public void fuehreBarZahlungDurch(int bezahlterBetrag)
+    public void fuehreBarZahlungDurch(String bezahlterBetrag)
     {
-        _bezahlterBetrag += bezahlterBetrag;
+        //TODO
+        //        _bezahlterBetrag += bezahlterBetrag;
         if (berechneDifferenz() == 0)
         {
 
@@ -40,12 +42,12 @@ public class BarZahlWerkzeug
 
     private boolean istBetragGueltig()
     {
-        int betrag = _barzahlUi.getBetrag();
-        if (betrag == 0)
+        //TODO betragString type int
+        String betragString = _barzahlUi.getBetrag();
+        if (betragString == null)
         {
             return false;
         }
-        //TODO betragString type int
         return true;
     }
 

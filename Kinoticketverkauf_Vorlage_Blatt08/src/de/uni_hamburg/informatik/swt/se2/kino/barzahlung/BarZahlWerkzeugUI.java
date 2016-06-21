@@ -39,10 +39,9 @@ public class BarZahlWerkzeugUI extends JFrame
         return _abbrechenButton;
     }
 
-    int getBetrag()
+    String getBetrag()
     {
-        //TODO_betragField.getText()
-        return 0;
+        return _betragField.getText();
     }
 
     JButton getOkayButton()
