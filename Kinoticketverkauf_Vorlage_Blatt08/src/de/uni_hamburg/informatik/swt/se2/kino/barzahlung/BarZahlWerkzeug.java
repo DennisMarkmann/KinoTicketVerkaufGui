@@ -38,7 +38,7 @@ public class BarZahlWerkzeug
     private boolean istBetragGueltig()
     {
         return false;
-        //TODO betrag kleiner Preis, dateityp korrekt, feld nicht leer
+        //TODO dateityp korrekt, feld nicht leer
     }
 
     private boolean pruefeAllesBezahlt()
