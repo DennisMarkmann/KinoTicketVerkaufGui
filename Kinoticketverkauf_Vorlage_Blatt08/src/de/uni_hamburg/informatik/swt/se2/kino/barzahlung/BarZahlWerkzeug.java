@@ -3,7 +3,7 @@ package de.uni_hamburg.informatik.swt.se2.kino.barzahlung;
 public class BarZahlWerkzeug
 {
 
-    private BarZahlWerkzeugUI _bahrzahlUi;
+    private BarZahlWerkzeugUI _barzahlUi;
 
     public BarZahlWerkzeug()
     {
@@ -17,7 +17,7 @@ public class BarZahlWerkzeug
 
     private void createUI()
     {
-        _bahrzahlUi = new BarZahlWerkzeugUI();
+        _barzahlUi = new BarZahlWerkzeugUI();
     }
 
     private void fuehreBarZahlungDurch()
@@ -28,6 +28,11 @@ public class BarZahlWerkzeug
     private void istBetragGueltig()
     {
         //TODO betrag kleiner Preis, dateityp korrekt, feld nicht leer
+    }
+
+    private void pruefeAllesBezahlt()
+    {
+
     }
 
 }
