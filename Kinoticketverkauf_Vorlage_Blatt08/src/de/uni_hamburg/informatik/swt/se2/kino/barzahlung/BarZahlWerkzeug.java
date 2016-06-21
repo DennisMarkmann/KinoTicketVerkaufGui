@@ -22,7 +22,8 @@ public class BarZahlWerkzeug
 
     private void fuehreBarZahlungDurch()
     {
-
+        _barzahlUi.show();
+        istBetragGueltig();
     }
 
     private void istBetragGueltig()
