@@ -33,17 +33,15 @@ public class BarZahlWerkzeug
     {
         //TODO
         //        _bezahlterBetrag += bezahlterBetrag;
-        if (berechneDifferenz() == 0)
-        {
-
-        }
         //TODO berechneDifferenz
+        _barzahlUi.clearBetragField();
+        _barzahlUi.aktualisiereRestBetrag(berechneDifferenz());
     }
 
     private boolean istBetragGueltig()
     {
         //TODO betragString type int
-        String betragString = _barzahlUi.getBetrag();
+        String betragString = _barzahlUi.getBetragText();
         if (betragString == null)
         {
             return false;
@@ -67,7 +65,7 @@ public class BarZahlWerkzeug
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    fuehreBarZahlungDurch(_barzahlUi.getBetrag());
+                    fuehreBarZahlungDurch(_barzahlUi.getBetragText());
                 }
             });
 
