@@ -10,15 +10,17 @@ public class BarZahlWerkzeug
 
     private BarZahlWerkzeugUI _barzahlUi;
     private Vorstellung _vorstellung;
+    private int _preis;
 
-    public BarZahlWerkzeug(Vorstellung _vorstellung)
+    public BarZahlWerkzeug(Vorstellung vorstellung)
     {
         createUI();
-        _vorstellung = _vorstellung;
+        _vorstellung = vorstellung;
     }
 
-    private void berechneDifferenz(int bezahlterBetrag)
+    private int berechneDifferenz(int bezahlterBetrag)
     {
+        return bezahlterBetrag - _preis;
 
     }
 
