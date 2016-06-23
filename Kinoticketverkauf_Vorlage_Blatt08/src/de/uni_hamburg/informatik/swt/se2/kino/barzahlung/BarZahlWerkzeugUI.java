@@ -6,11 +6,11 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-class BarZahlWerkzeugUI extends JFrame
+class BarZahlWerkzeugUI extends JDialog
 {
     private static final long serialVersionUID = 4057874294977034472L;
 
@@ -27,8 +27,8 @@ class BarZahlWerkzeugUI extends JFrame
     BarZahlWerkzeugUI(int preis)
     {
         this.setSize(300, 200);
+        this.setModal(true);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLayout(new GridBagLayout());
         gridBagConstraints.fill = GridBagConstraints.BOTH;
         gridBagConstraints.insets = new Insets(5, 5, 5, 5);
