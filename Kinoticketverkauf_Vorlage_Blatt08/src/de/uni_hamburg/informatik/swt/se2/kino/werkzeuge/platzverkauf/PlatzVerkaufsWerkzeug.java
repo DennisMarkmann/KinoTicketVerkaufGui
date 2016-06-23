@@ -29,8 +29,6 @@ public class PlatzVerkaufsWerkzeug
 
     private PlatzVerkaufsWerkzeugUI _ui;
 
-    private BarZahlWerkzeug _barzahlWerkzeug;
-
     /**
      * Initialisiert das PlatzVerkaufsWerkzeug.
      */
@@ -96,7 +94,7 @@ public class PlatzVerkaufsWerkzeug
     {
         //TODO implement new stuff
         verkaufePlaetze(_vorstellung);
-        _barzahlWerkzeug = new BarZahlWerkzeug(_vorstellung);
+        new BarZahlWerkzeug(_vorstellung);
     }
 
     /**

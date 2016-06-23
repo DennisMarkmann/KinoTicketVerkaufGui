@@ -1,4 +1,3 @@
-- Event handling fixen
 - Logik programmieren
 - "Rollback Logik" nach erstem Okay, dann abbrechen -> Erst wirklich dann verkaufen
 - Asserts etc.
