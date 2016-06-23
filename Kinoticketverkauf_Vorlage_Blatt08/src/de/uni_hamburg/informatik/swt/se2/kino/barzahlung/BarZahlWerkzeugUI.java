@@ -14,7 +14,6 @@ public class BarZahlWerkzeugUI extends JFrame
 {
     private static final long serialVersionUID = 4057874294977034472L;
 
-    private static final String TITEL = "SE2-Kinokartenverkauf SoSe 2016";
     private JLabel _preisLabelDesc;
     private JLabel _preisLabel;
 
