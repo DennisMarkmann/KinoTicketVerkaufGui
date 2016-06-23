@@ -9,7 +9,7 @@ import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Datum;
 
 /**
  * Ein Kino mit mehreren Kinosälen, in denen Vorstellungen laufen koennen.
- * 
+ *
  * @author SE2-Team
  * @version SoSe 2016
  */
@@ -22,12 +22,12 @@ public class Kino
 
     /**
      * Initialisiert ein Kino.
-     * 
+     *
      * @param saele
      *            die Kinosäle des Kinos.
      * @param vorstellungen
      *            die Vorstellungen, die in dem Kino laufen.
-     * 
+     *
      * @require saele != null
      * @require vorstellungen != null
      * @require saele enthaelt keine Nullpointer
@@ -53,7 +53,8 @@ public class Kino
         {
             assert vorstellung != null : "Vorbedingung verletzt: vorstellungen enthaelt keine Nullpointer";
             Kinosaal saal = vorstellung.getKinosaal();
-            assert _kinosaele.contains(saal) : "Vorbedingung verletzt: alle Vorstellungen laufen in uebergebenen Kinosaelen";
+            assert _kinosaele.contains(
+                    saal) : "Vorbedingung verletzt: alle Vorstellungen laufen in uebergebenen Kinosaelen";
             Datum datum = vorstellung.getDatum();
             Tagesplan tagesplan = _tagesplaene.get(datum);
             if (tagesplan == null)
@@ -66,19 +67,8 @@ public class Kino
     }
 
     /**
-     * Prüft, ob der angegebene Kinosaal zu diesem Kino gehört.
-     * 
-     * @param kinosaal
-     *            der Kinosaal.
-     */
-    public boolean hatKinosaal(Kinosaal kinosaal)
-    {
-        return _kinosaele.contains(kinosaal);
-    }
-
-    /**
      * Gibt die Kinosäle dieses Kinos zurück.
-     * 
+     *
      * @ensure result != null
      */
     public List<Kinosaal> getKinosaele()
@@ -88,10 +78,10 @@ public class Kino
 
     /**
      * Gibt den Tagesplan fuer das angegebene Datum zurück.
-     * 
+     *
      * @param tag
      *            das Datum.
-     * 
+     *
      * @require tag != null
      * @ensure result != null
      */
@@ -105,5 +95,16 @@ public class Kino
             tagesplan = new Tagesplan(tag);
         }
         return tagesplan;
+    }
+
+    /**
+     * Prüft, ob der angegebene Kinosaal zu diesem Kino gehört.
+     *
+     * @param kinosaal
+     *            der Kinosaal.
+     */
+    boolean hatKinosaal(Kinosaal kinosaal)
+    {
+        return _kinosaele.contains(kinosaal);
     }
 }

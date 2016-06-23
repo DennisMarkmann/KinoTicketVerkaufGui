@@ -8,7 +8,7 @@ import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Platz;
 /**
  * Ein Kinosaal. Ein Kinosaal hat einen Namen und kennt die Anzahl seiner
  * Sitzplätze.
- * 
+ *
  * @author SE2-Team
  * @version SoSe 2016
  */
@@ -20,18 +20,18 @@ public class Kinosaal
 
     /**
      * Initialisiert einen neuen Kinosaal.
-     * 
+     *
      * @param name
      *            der Name des Kinosaals.
      * @param anzahlReihen
      *            die Anzahl der Reihen.
      * @param anzahlSitzeProReihe
      *            die Anzahl der Sitze Pro Reihe.
-     * 
+     *
      * @require name != null
      * @require anzahlReihen > 0
      * @require anzahlSitzeProReihe > 0
-     * 
+     *
      * @ensure getName() == name
      * @ensure getAnzahlReihen() == anzahlReihen
      * @ensure getAnzahlSitzeProReihe() == anzahlSitzeProReihe
@@ -47,19 +47,24 @@ public class Kinosaal
         _anzahlSitzeProReihe = anzahlSitzeProReihe;
     }
 
-    /**
-     * Gibt den Namen dieses Kinosaals zurück.
-     * 
-     * @ensure result != null
-     */
-    public String getName()
+    @Override
+    public boolean equals(Object obj)
     {
-        return _name;
+        boolean result = false;
+        if (obj instanceof Kinosaal)
+        {
+            Kinosaal saal = (Kinosaal) obj;
+            result = getName().equals(saal.getName())
+                    && getAnzahlReihen() == saal.getAnzahlReihen()
+                    && getAnzahlSitzeProReihe() == saal
+                        .getAnzahlSitzeProReihe();
+        }
+        return result;
     }
 
     /**
      * Gibt die Anzahl der Reihen in diesem Kinosaal zurück.
-     * 
+     *
      * @ensure result > 0
      */
     public int getAnzahlReihen()
@@ -69,7 +74,7 @@ public class Kinosaal
 
     /**
      * Gibt die Anzahl der Sitze pro Reihe in diesem Kinosaal zurück.
-     * 
+     *
      * @ensure result > 0
      */
     public int getAnzahlSitzeProReihe()
@@ -78,8 +83,18 @@ public class Kinosaal
     }
 
     /**
+     * Gibt den Namen dieses Kinosaals zurück.
+     *
+     * @ensure result != null
+     */
+    public String getName()
+    {
+        return _name;
+    }
+
+    /**
      * Gibt eine Liste der Plätze in diesem Kinosaal zurück.
-     * 
+     *
      * @ensure result != null
      */
     public List<Platz> getPlaetze()
@@ -98,40 +113,6 @@ public class Kinosaal
         return kinoPlaetze;
     }
 
-    /**
-     * Prüft, ob es den angegebenen Platz in dem Kinosaal gibt.
-     * 
-     * @param platz
-     *            der Platz.
-     * 
-     * @return <code>true</code>, falls der Platz existiert, <code>false</code>
-     *         sonst.
-     *         
-     * @require platz != null        
-     */
-    public boolean hatPlatz(Platz platz)
-    {
-        assert platz != null : "Vorbedingung verletzt: platz != null";
-        
-        return ((platz.getReihe() >= 0) && (platz.getReihe() < _anzahlReihen))
-                && ((platz.getSitz() >= 0) && (platz.getSitz() < _anzahlSitzeProReihe));
-    }
-
-    @Override
-    public boolean equals(Object obj)
-    {
-        boolean result = false;
-        if (obj instanceof Kinosaal)
-        {
-            Kinosaal saal = (Kinosaal) obj;
-            result = getName().equals(saal.getName())
-                    && getAnzahlReihen() == saal.getAnzahlReihen()
-                    && getAnzahlSitzeProReihe() == saal
-                            .getAnzahlSitzeProReihe();
-        }
-        return result;
-    }
-
     @Override
     public int hashCode()
     {
@@ -141,6 +122,26 @@ public class Kinosaal
         result = prime * result + _anzahlSitzeProReihe;
         result = prime * result + ((_name == null) ? 0 : _name.hashCode());
         return result;
+    }
+
+    /**
+     * Prüft, ob es den angegebenen Platz in dem Kinosaal gibt.
+     *
+     * @param platz
+     *            der Platz.
+     *
+     * @return <code>true</code>, falls der Platz existiert, <code>false</code>
+     *         sonst.
+     *
+     * @require platz != null
+     */
+    boolean hatPlatz(Platz platz)
+    {
+        assert platz != null : "Vorbedingung verletzt: platz != null";
+
+        return ((platz.getReihe() >= 0) && (platz.getReihe() < _anzahlReihen))
+                && ((platz.getSitz() >= 0)
+                        && (platz.getSitz() < _anzahlSitzeProReihe));
     }
 
     @Override

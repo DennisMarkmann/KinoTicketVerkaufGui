@@ -11,7 +11,7 @@ import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Uhrzeit;
  * Vorstellung speichert zum einen die Daten der eigentlichen Vorstellung (wann
  * und wo läuft welcher Film) und zum anderen, welche Plätze für diese
  * Vorstellung bereits verkauft wurden.
- * 
+ *
  * @author SE2-Team
  * @version SoSe 2016
  */
@@ -28,21 +28,21 @@ public class Vorstellung
 
     /**
      * Erstellt eine neue Vorstellung.
-     * 
+     *
      * @param kinosaal der Kinosaal, in dem die Vorstellung laeuft.
      * @param film der Film, der in dieser Vorstellung gezeigt wird.
      * @param anfangszeit die Anfangszeit der Vorstellung.
      * @param endzeit die Endzeit der Vorstellung.
      * @param preis der Verkaufspreis in Eurocent für Karten zu dieser
      *            Vorstellung.
-     * 
+     *
      * @require kinosaal != null
      * @require film != null
      * @require anfangszeit != null
      * @require endzeit != null
      * @require datum != null
      * @require preis > 0
-     * 
+     *
      * @ensure getKinosaal() == kinosaal
      * @ensure getFilm() == film
      * @ensure getAnfangszeit() == anfangszeit
@@ -58,7 +58,7 @@ public class Vorstellung
         assert anfangszeit != null : "Vorbedingung verletzt: anfangszeit != null";
         assert endzeit != null : "Vorbedingung verletzt: endzeit != null";
         assert datum != null : "Vorbedingung verletzt: datum != null";
-        assert preis > 0: "Vorbedingung verletzt: preis > 0";
+        assert preis > 0 : "Vorbedingung verletzt: preis > 0";
 
         _kinosaal = kinosaal;
         _film = film;
@@ -67,68 +67,18 @@ public class Vorstellung
         _datum = datum;
         _preis = preis;
         _verkauft = new boolean[kinosaal.getAnzahlReihen()][kinosaal
-                .getAnzahlSitzeProReihe()];
+            .getAnzahlSitzeProReihe()];
         _anzahlVerkauftePlaetze = 0;
     }
 
     /**
-     * Gibt den Kinosaal zurück, in dem diese Vorstellung läuft.
-     * 
-     * @ensure result != null
-     */
-    public Kinosaal getKinosaal()
-    {
-        return _kinosaal;
-    }
-
-    /**
-     * Gibt den Film zurück, der in dieser Vorstellung gezeigt wird.
-     * 
-     * @ensure result != null
-     */
-    public Film getFilm()
-    {
-        return _film;
-    }
-
-    /**
      * Gibt die Uhrzeit zurück, zu der diese Vorstellung beginnt.
-     * 
+     *
      * @ensure result != null
      */
     public Uhrzeit getAnfangszeit()
     {
         return _anfangszeit;
-    }
-
-    /**
-     * Gibt die Uhrzeit zurück, zu der diese Vorstellung endet.
-     * 
-     * @ensure result != null
-     */
-    public Uhrzeit getEndzeit()
-    {
-        return _endzeit;
-    }
-
-    /**
-     * Gibt das Datum zurück, an dem diese Vorstellung läuft.
-     * 
-     * @ensure result != null
-     */
-    public Datum getDatum()
-    {
-        return _datum;
-    }
-
-    /**
-     * Gibt den Verkaufspreis in Eurocent für Karten zu dieser Vorstellung
-     * zurück.
-     * 
-     */
-    public int getPreis()
-    {
-        return _preis;
     }
 
     /**
@@ -140,33 +90,83 @@ public class Vorstellung
     }
 
     /**
-     * Prüft, ob der angegebene Sitzplatz in dieser Vorstellung vorhanden ist.
-     * 
-     * @param platz der Sitzplatz.
-     * 
-     * @return <code>true</code>, falls der Platz existiert, <code>false</code>
-     *         sonst.
-     * 
-     * @require platz != null
+     * Gibt das Datum zurück, an dem diese Vorstellung läuft.
+     *
+     * @ensure result != null
      */
-    public boolean hatPlatz(Platz platz)
+    public Datum getDatum()
     {
-        assert platz != null : "Vorbedingung verletzt: platz != null";
+        return _datum;
+    }
 
-        return _kinosaal.hatPlatz(platz);
+    /**
+     * Gibt die Uhrzeit zurück, zu der diese Vorstellung endet.
+     *
+     * @ensure result != null
+     */
+    public Uhrzeit getEndzeit()
+    {
+        return _endzeit;
+    }
+
+    /**
+     * Gibt den Film zurück, der in dieser Vorstellung gezeigt wird.
+     *
+     * @ensure result != null
+     */
+    public Film getFilm()
+    {
+        return _film;
+    }
+
+    /**
+     * Gibt den Kinosaal zurück, in dem diese Vorstellung läuft.
+     *
+     * @ensure result != null
+     */
+    public Kinosaal getKinosaal()
+    {
+        return _kinosaal;
+    }
+
+    /**
+     * Gibt den Verkaufspreis in Eurocent für Karten zu dieser Vorstellung
+     * zurück.
+     *
+     */
+    public int getPreis()
+    {
+        return _preis;
+    }
+
+    /**
+     * Gibt den Gesamtpreis für die angegebenen Plätze zurücke
+     *
+     * @param plaetze die Sitzplätze.
+     *
+     * @return Gesamtpreis in Eurocent
+     *
+     * @require hatPlaetze(plaetze)
+     */
+    public int getPreisFuerPlaetze(Set<Platz> plaetze)
+    {
+        assert hatPlaetze(
+                plaetze) : "Vorbedingung verletzt: hatPlaetze(plaetze)";
+
+        return _preis * plaetze.size();
     }
 
     /**
      * Prüft, ob alle angegebenen Sitzplätze in dieser Vorstellung vorhanden
      * sind.
-     * 
+     *
      * @param plaetze die Sitzplätze.
-     * 
+     *
      * @return true, falls alle Plätze existieren, false sonst.
-     * 
+     *
      * @require plaetze != null
      */
-    public boolean hatPlaetze(Set<Platz> plaetze)
+    boolean hatPlaetze(Set<Platz> plaetze)
     {
         assert plaetze != null : "Vorbedingung verletzt: plaetze != null";
 
@@ -179,63 +179,59 @@ public class Vorstellung
     }
 
     /**
-     * Gibt den Gesamtpreis für die angegebenen Plätze zurücke
-     * 
-     * @param plaetze die Sitzplätze.
-     * 
-     * @return Gesamtpreis in Eurocent
-     * 
+     * Prüft, ob der angegebene Sitzplatz in dieser Vorstellung vorhanden ist.
+     *
+     * @param platz der Sitzplatz.
+     *
+     * @return <code>true</code>, falls der Platz existiert, <code>false</code>
+     *         sonst.
+     *
+     * @require platz != null
+     */
+    public boolean hatPlatz(Platz platz)
+    {
+        assert platz != null : "Vorbedingung verletzt: platz != null";
+
+        return _kinosaal.hatPlatz(platz);
+    }
+
+    /**
+     * Gibt an, ob ein bestimmter Platz bereits verkauft ist.
+     *
+     * @param platz der Sitzplatz.
+     *
+     * @return true, falls der Platz verkauft ist, false sonst.
+     *
+     * @require hatPlatz(platz)
+     */
+    private boolean istPlatzVerkauft(Platz platz)
+    {
+        assert hatPlatz(platz) : "Vorbedingung verletzt: hatPlatz(platz)";
+
+        return _verkauft[platz.getReihe()][platz.getSitz()];
+    }
+
+    /**
+     * Prüft, ob ein gegebener Platz stornierbar ist. Dafür wird geschaut, ob
+     * ein gegebener Platz verkauft ist.
+     *
+     * @return true, wenn ein Platz stornierbar ist, sonst false.
+     *
      * @require hatPlaetze(plaetze)
      */
-    public int getPreisFuerPlaetze(Set<Platz> plaetze)
+    boolean istStornierbar(Platz platz)
     {
-        assert hatPlaetze(plaetze) : "Vorbedingung verletzt: hatPlaetze(plaetze)";
+        assert hatPlatz(platz) : "Vorbedingung verletzt: hatPlatz(platz)";
 
-        return _preis * plaetze.size();
-    }
-
-    /**
-     * Verkauft einen Platz.
-     * 
-     * @param platz der Sitzplatz.
-     * 
-     * @require istVerkaufbar(platz)
-     * 
-     * @ensure !istVerkaufbar(platz)
-     * @ensure istStornierbar(platz)
-     */
-    public void verkaufePlatz(Platz platz)
-    {
-        assert istVerkaufbar(platz) : "Vorbedingung verletzt: istVerkaufbar(platz)";
-
-        _verkauft[platz.getReihe()][platz.getSitz()] = true;
-        _anzahlVerkauftePlaetze++;
-    }
-
-    /**
-     * Verkauft die gegebenen Plätze.
-     * 
-     * @require sindVerkaufbar(plaetze)
-     * 
-     * @ensure !sindVerkaufbar(plaetze)
-     * @ensure sindStornierbar(plaetze)
-     */
-    public void verkaufePlaetze(Set<Platz> plaetze)
-    {
-        assert sindVerkaufbar(plaetze) : "Vorbedingung verletzt: sindVerkaufbar(plaetze)";
-
-        for (Platz platz : plaetze)
-        {
-            verkaufePlatz(platz);
-        }
+        return istPlatzVerkauft(platz);
     }
 
     /**
      * Prüft, ob ein gegebener Platz verkauft werden kann. Dafür wird geschaut,
      * ob der gegebene Platz bisher verkauft ist.
-     * 
+     *
      * @return true, wenn ein Plätze verkaufbar ist, sonst false.
-     * 
+     *
      * @require hatPlatz(platz)
      */
     public boolean istVerkaufbar(Platz platz)
@@ -246,17 +242,39 @@ public class Vorstellung
     }
 
     /**
+     * Prüft, ob die gegebenen Plätze alle stornierbar sind. Dafür wird
+     * geschaut, ob jeder gegebene Platz verkauft ist.
+     *
+     * @return true, wenn alle Plätze stornierbar sind, sonst false.
+     *
+     * @require hatPlaetze(plaetze)
+     */
+    public boolean sindStornierbar(Set<Platz> plaetze)
+    {
+        assert hatPlaetze(
+                plaetze) : "Vorbedingung verletzt: hatPlaetze(plaetze)";
+
+        boolean result = true;
+        for (Platz platz : plaetze)
+        {
+            result &= istStornierbar(platz);
+        }
+        return result;
+    }
+
+    /**
      * Prüft, ob gegebene Plätze alle verkauft werden können. Dafür wird
      * geschaut, ob keiner der gegebenen Plätze bisher verkauft ist.
-     * 
+     *
      * @return true, wenn alle Plätze verkaufbar sind, sonst false.
-     * 
+     *
      * @require hatPlaetze(plaetze)
      */
     public boolean sindVerkaufbar(Set<Platz> plaetze)
     {
         assert plaetze != null : "Vorbedingung verletzt: plaetze != null";
-        assert hatPlaetze(plaetze) : "Vorbedingung verletzt: hatPlaetze(plaetze)";
+        assert hatPlaetze(
+                plaetze) : "Vorbedingung verletzt: hatPlaetze(plaetze)";
 
         boolean result = true;
         for (Platz platz : plaetze)
@@ -267,34 +285,17 @@ public class Vorstellung
     }
 
     /**
-     * Storniert einen Platz.
-     * 
-     * @param platz der Sitzplatz.
-     * 
-     * @require istStornierbar(platz)
-     * 
-     * @ensure !istStornierbar(platz)
-     * @ensure istVerkaufbar(platz)
-     */
-    public void stornierePlatz(Platz platz)
-    {
-        assert istStornierbar(platz) : "Vorbedingung verletzt: istStornierbar(platz)";
-
-        _verkauft[platz.getReihe()][platz.getSitz()] = false;
-        _anzahlVerkauftePlaetze--;
-    }
-
-    /**
      * Storniert die gegebenen Plätze.
-     * 
+     *
      * @require sindStornierbar(plaetze)
-     * 
+     *
      * @ensure !sindStornierbar(plaetze)
      * @ensure sindVerkaufbar(plaetze)
      */
     public void stornierePlaetze(Set<Platz> plaetze)
     {
-        assert sindStornierbar(plaetze) : "Vorbedingung verletzt: sindStornierbar(plaetze)";
+        assert sindStornierbar(
+                plaetze) : "Vorbedingung verletzt: sindStornierbar(plaetze)";
 
         for (Platz platz : plaetze)
         {
@@ -303,38 +304,22 @@ public class Vorstellung
     }
 
     /**
-     * Prüft, ob ein gegebener Platz stornierbar ist. Dafür wird geschaut, ob
-     * ein gegebener Platz verkauft ist.
-     * 
-     * @return true, wenn ein Platz stornierbar ist, sonst false.
-     * 
-     * @require hatPlaetze(plaetze)
+     * Storniert einen Platz.
+     *
+     * @param platz der Sitzplatz.
+     *
+     * @require istStornierbar(platz)
+     *
+     * @ensure !istStornierbar(platz)
+     * @ensure istVerkaufbar(platz)
      */
-    public boolean istStornierbar(Platz platz)
+    public void stornierePlatz(Platz platz)
     {
-        assert hatPlatz(platz) : "Vorbedingung verletzt: hatPlatz(platz)";
+        assert istStornierbar(
+                platz) : "Vorbedingung verletzt: istStornierbar(platz)";
 
-        return istPlatzVerkauft(platz);
-    }
-
-    /**
-     * Prüft, ob die gegebenen Plätze alle stornierbar sind. Dafür wird
-     * geschaut, ob jeder gegebene Platz verkauft ist.
-     * 
-     * @return true, wenn alle Plätze stornierbar sind, sonst false.
-     * 
-     * @require hatPlaetze(plaetze)
-     */
-    public boolean sindStornierbar(Set<Platz> plaetze)
-    {
-        assert hatPlaetze(plaetze) : "Vorbedingung verletzt: hatPlaetze(plaetze)";
-
-        boolean result = true;
-        for (Platz platz : plaetze)
-        {
-            result &= istStornierbar(platz);
-        }
-        return result;
+        _verkauft[platz.getReihe()][platz.getSitz()] = false;
+        _anzahlVerkauftePlaetze--;
     }
 
     @Override
@@ -344,18 +329,40 @@ public class Vorstellung
     }
 
     /**
-     * Gibt an, ob ein bestimmter Platz bereits verkauft ist.
-     * 
-     * @param platz der Sitzplatz.
-     * 
-     * @return true, falls der Platz verkauft ist, false sonst.
-     * 
-     * @require hatPlatz(platz)
+     * Verkauft die gegebenen Plätze.
+     *
+     * @require sindVerkaufbar(plaetze)
+     *
+     * @ensure !sindVerkaufbar(plaetze)
+     * @ensure sindStornierbar(plaetze)
      */
-    private boolean istPlatzVerkauft(Platz platz)
+    public void verkaufePlaetze(Set<Platz> plaetze)
     {
-        assert hatPlatz(platz) : "Vorbedingung verletzt: hatPlatz(platz)";
+        assert sindVerkaufbar(
+                plaetze) : "Vorbedingung verletzt: sindVerkaufbar(plaetze)";
 
-        return _verkauft[platz.getReihe()][platz.getSitz()];
+        for (Platz platz : plaetze)
+        {
+            verkaufePlatz(platz);
+        }
+    }
+
+    /**
+     * Verkauft einen Platz.
+     *
+     * @param platz der Sitzplatz.
+     *
+     * @require istVerkaufbar(platz)
+     *
+     * @ensure !istVerkaufbar(platz)
+     * @ensure istStornierbar(platz)
+     */
+    public void verkaufePlatz(Platz platz)
+    {
+        assert istVerkaufbar(
+                platz) : "Vorbedingung verletzt: istVerkaufbar(platz)";
+
+        _verkauft[platz.getReihe()][platz.getSitz()] = true;
+        _anzahlVerkauftePlaetze++;
     }
 }

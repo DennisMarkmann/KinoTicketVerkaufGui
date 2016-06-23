@@ -10,16 +10,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class BarZahlWerkzeugUI extends JFrame
+class BarZahlWerkzeugUI extends JFrame
 {
     private static final long serialVersionUID = 4057874294977034472L;
 
     private JLabel _preisLabelDesc;
     private JLabel _preisLabel;
-
     private JTextField _betragField;
     private JLabel _betragLabelDesc;
-
     private JLabel _restLabelDesc;
     private JLabel _restLabel;
     private JButton _okayButton;
@@ -28,13 +26,10 @@ public class BarZahlWerkzeugUI extends JFrame
 
     BarZahlWerkzeugUI(int preis)
     {
-
         this.setSize(300, 200);
-
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLayout(new GridBagLayout());
-
         gridBagConstraints.fill = GridBagConstraints.BOTH;
         gridBagConstraints.insets = new Insets(5, 5, 5, 5);
         gridBagConstraints.weightx = 2;

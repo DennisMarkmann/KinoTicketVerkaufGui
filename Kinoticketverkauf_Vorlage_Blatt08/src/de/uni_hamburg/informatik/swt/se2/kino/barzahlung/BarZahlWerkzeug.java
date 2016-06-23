@@ -29,7 +29,7 @@ public class BarZahlWerkzeug
         _barzahlUi = new BarZahlWerkzeugUI(0);
     }
 
-    public void fuehreBarZahlungDurch(String bezahlterBetrag)
+    private void fuehreBarZahlungDurch(String bezahlterBetrag)
     {
         //_bezahlterBetrag += bezahlterBetrag;
         //TODO berechneDifferenz

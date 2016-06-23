@@ -5,7 +5,7 @@ import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.FSK;
 /**
  * Ein Film. Ein Film besteht aus einem Titel, einer Länge in Minuten, einer
  * Altersfreigabe und einer Angabe darueber, ob der Film Überlänge hat.
- * 
+ *
  * @author SE2-Team
  * @version SoSe 2016
  */
@@ -18,7 +18,7 @@ public class Film
 
     /**
      * Initialisiert einen neuen Film.
-     * 
+     *
      * @param titel
      *            der Titel.
      * @param laenge
@@ -27,11 +27,11 @@ public class Film
      *            die Altersfreigabe fuer diesen Film.
      * @param ueberlaenge
      *            hat der Film Überlaenge?
-     * 
+     *
      * @require titel != null
      * @require laenge > 0
      * @require fsk != null
-     * 
+     *
      * @ensure getTitel() == titel
      * @ensure getLaenge() == laenge
      * @ensure getFSK() == fsk
@@ -49,14 +49,19 @@ public class Film
         _ueberlaenge = ueberlaenge;
     }
 
+    public String getFormatiertenString()
+    {
+        return getTitel() + ", " + getFSK();
+    }
+
     /**
-     * Gibt den Titel dieses Films zurück.
-     * 
+     * Gibt die Altersfreigabe fuer diesen Film zurück.
+     *
      * @ensure result != null
      */
-    public String getTitel()
+    public FSK getFSK()
     {
-        return _titel;
+        return _fsk;
     }
 
     /**
@@ -68,19 +73,19 @@ public class Film
     }
 
     /**
-     * Gibt die Altersfreigabe fuer diesen Film zurück.
-     * 
+     * Gibt den Titel dieses Films zurück.
+     *
      * @ensure result != null
      */
-    public FSK getFSK()
+    public String getTitel()
     {
-        return _fsk;
+        return _titel;
     }
 
     /**
      * Gibt zurück, ob dieser Film Überlaenge hat.
      */
-    public boolean hatUeberlaenge()
+    boolean hatUeberlaenge()
     {
         return _ueberlaenge;
     }
@@ -89,10 +94,5 @@ public class Film
     public String toString()
     {
         return "Film: Titel=" + _titel;
-    }
-
-    public String getFormatiertenString()
-    {
-        return getTitel() + ", " + getFSK();
     }
 }
