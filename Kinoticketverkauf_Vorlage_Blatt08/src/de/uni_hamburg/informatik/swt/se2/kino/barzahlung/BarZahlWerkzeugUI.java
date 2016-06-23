@@ -67,7 +67,7 @@ class BarZahlWerkzeugUI extends JDialog
 
     void aktualisiereRestBetrag(int restBetrag)
     {
-        this._restLabelDesc.setText("" + restBetrag);
+        this._restLabel.setText("" + restBetrag);
     }
 
     void changeBetragFieldColor(Color color)

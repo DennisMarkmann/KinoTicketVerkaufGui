@@ -93,8 +93,8 @@ public class PlatzVerkaufsWerkzeug
     private void fuehreBarzahlungDurch()
     {
         //TODO implement new stuff
-        verkaufePlaetze(_vorstellung);
         new BarZahlWerkzeug(_vorstellung);
+        verkaufePlaetze(_vorstellung);
     }
 
     /**

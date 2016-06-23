@@ -31,17 +31,17 @@ public class BarZahlWerkzeug
 
     private void createUI()
     {
-        _barzahlUi = new BarZahlWerkzeugUI(0);
+        _barzahlUi = new BarZahlWerkzeugUI(_vorstellung.getPreis());
     }
 
-    private void fuehreBarZahlungDurch(String bezahlterBetrag)
+    private void fuehreBarZahlungDurch(int betrag)
     {
         if (istAllesBezahlt())
         {
             //TODO eigentlicher Verkauf
+            _barzahlUi.dispose();
         }
-        //_bezahlterBetrag += bezahlterBetrag;
-        //TODO berechneDifferenz
+        _bezahlterBetrag += betrag;
         _barzahlUi.clearBetragField();
         _barzahlUi.aktualisiereRestBetrag(berechneDifferenz());
     }
@@ -62,7 +62,7 @@ public class BarZahlWerkzeug
                 @Override
                 public void actionPerformed(ActionEvent e)
                 {
-                    fuehreBarZahlungDurch(_barzahlUi.getBetragText());
+                    fuehreBarZahlungDurch(_barzahlUi.getBetragAsInt());
                 }
             });
 
@@ -94,13 +94,13 @@ public class BarZahlWerkzeug
 
                 private boolean istBetragGueltig()
                 {
-                    if (_barzahlUi.getBetragField()
+                    if (berechneDifferenz() != 0 && _barzahlUi.getBetragField()
                         .getText()
-                        .length() > 0 && _barzahlUi.getBetragAsInt() != 0)
+                        .length() == 0 && _barzahlUi.getBetragAsInt() == 0)
                     {
-                        return true;
+                        return false;
                     }
-                    return false;
+                    return true;
                 }
 
                 @Override
