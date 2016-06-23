@@ -15,8 +15,8 @@ public class BarZahlWerkzeug
     public BarZahlWerkzeug(Vorstellung vorstellung)
     {
         _vorstellung = vorstellung;
-        registriereUIAktionen();
         createUI();
+        registriereUIAktionen();
     }
 
     private int berechneDifferenz()
@@ -31,8 +31,7 @@ public class BarZahlWerkzeug
 
     public void fuehreBarZahlungDurch(String bezahlterBetrag)
     {
-        //TODO
-        //        _bezahlterBetrag += bezahlterBetrag;
+        //_bezahlterBetrag += bezahlterBetrag;
         //TODO berechneDifferenz
         _barzahlUi.clearBetragField();
         _barzahlUi.aktualisiereRestBetrag(berechneDifferenz());

@@ -1,0 +1,9 @@
+- Logik programmieren
+- restliche Anwendung Sperren wenn Fenster aktiv
+- "Rollback Logik" nach erstem Okay, dann abbrechen -> Erst wirklich dann verkaufen
+- Asserts etc.
+- JUnit Tests
+- Anwendung Testen (Alle Fälle auf dem Zettel)
+- JavaDocs / Kommentare
+- UML anpassen
+- Zusatz (Falls jemand üben will) : Steuerung per Tastatur einbauen (Tabben, Enter, ESC)
