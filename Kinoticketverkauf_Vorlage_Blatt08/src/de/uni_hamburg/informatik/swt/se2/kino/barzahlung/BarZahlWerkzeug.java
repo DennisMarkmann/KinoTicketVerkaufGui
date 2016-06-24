@@ -3,9 +3,8 @@ package de.uni_hamburg.informatik.swt.se2.kino.barzahlung;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Vorstellung;
 import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf.PlatzVerkaufsWerkzeug;
@@ -47,7 +46,14 @@ public class BarZahlWerkzeug
             _platzVerkaufsWerkzeug.verkaufePlaetze(_vorstellung);
             _barzahlUi.dispose();
         }
-        _bezahlterBetrag += betrag;
+        if (berechneDifferenz() > 0)
+        {
+            _bezahlterBetrag += betrag;
+        }
+        else
+        {
+            _bezahlterBetrag -= betrag;
+        }
         _barzahlUi.clearBetragField();
         _barzahlUi.aktualisiereRestBetrag(berechneDifferenz());
     }
@@ -83,26 +89,14 @@ public class BarZahlWerkzeug
             });
 
         _barzahlUi.getBetragField()
-            .getDocument()
-            .addDocumentListener(new DocumentListener()
+            .addKeyListener(new KeyListener()
             {
-                @Override
-                public void changedUpdate(DocumentEvent e)
-                {
-                    validate();
-                }
-
-                @Override
-                public void insertUpdate(DocumentEvent e)
-                {
-                    validate();
-                }
 
                 private boolean istBetragGueltig()
                 {
                     if (berechneDifferenz() != 0 && _barzahlUi.getBetragField()
                         .getText()
-                        .length() == 0 && _barzahlUi.getBetragAsInt() == 0)
+                        .length() == 0 || _barzahlUi.getBetragAsInt() == 0)
                     {
                         return false;
                     }
@@ -110,12 +104,33 @@ public class BarZahlWerkzeug
                 }
 
                 @Override
-                public void removeUpdate(DocumentEvent e)
+                public void keyPressed(KeyEvent e)
                 {
-                    validate();
+                    //nothing to do here
                 }
 
-                public void validate()
+                @Override
+                public void keyReleased(KeyEvent e)
+                {
+                    if (e.getKeyCode() == KeyEvent.VK_ENTER & validate())
+
+                    {
+                        fuehreBarZahlungDurch(_barzahlUi.getBetragAsInt());
+                    }
+                    else if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+                    {
+                        _barzahlUi.dispose();
+                    }
+
+                }
+
+                @Override
+                public void keyTyped(KeyEvent e)
+                {
+                    //nothing to do here
+                }
+
+                private boolean validate()
                 {
                     if (istBetragGueltig())
                     {
@@ -127,8 +142,8 @@ public class BarZahlWerkzeug
 
                     }
                     _barzahlUi.changeOkayButtonState(istBetragGueltig());
+                    return istBetragGueltig();
                 }
             });
     }
-
 }
