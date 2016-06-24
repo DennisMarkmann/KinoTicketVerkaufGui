@@ -28,6 +28,7 @@ public class PlatzVerkaufsWerkzeug
     private Vorstellung _vorstellung;
 
     private PlatzVerkaufsWerkzeugUI _ui;
+    private int _preis;
 
     /**
      * Initialisiert das PlatzVerkaufsWerkzeug.
@@ -65,15 +66,15 @@ public class PlatzVerkaufsWerkzeug
     {
         if (istVerkaufenMoeglich(plaetze))
         {
-            int preis = _vorstellung.getPreisFuerPlaetze(plaetze);
+            _preis = _vorstellung.getPreisFuerPlaetze(plaetze);
             _ui.getPreisLabel()
-                .setText("Gesamtpreis: " + preis + " Eurocent");
+                .setText("Gesamtpreis: " + _preis + " Eurocent");
         }
         else if (istStornierenMoeglich(plaetze))
         {
-            int preis = _vorstellung.getPreisFuerPlaetze(plaetze);
+            _preis = _vorstellung.getPreisFuerPlaetze(plaetze);
             _ui.getPreisLabel()
-                .setText("Gesamtstorno: " + preis + " Eurocent");
+                .setText("Gesamtstorno: " + _preis + " Eurocent");
         }
         else if (!plaetze.isEmpty())
         {
@@ -92,7 +93,7 @@ public class PlatzVerkaufsWerkzeug
      */
     private void fuehreBarzahlungDurch()
     {
-        new BarZahlWerkzeug(_vorstellung, this);
+        new BarZahlWerkzeug(_vorstellung, this, _preis);
     }
 
     /**

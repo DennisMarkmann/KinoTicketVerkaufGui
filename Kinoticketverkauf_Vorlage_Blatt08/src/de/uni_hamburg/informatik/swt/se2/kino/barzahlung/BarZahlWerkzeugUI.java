@@ -19,7 +19,6 @@ class BarZahlWerkzeugUI extends JDialog
     private JLabel _preisLabel;
     private JTextField _betragField;
     private JLabel _betragLabelDesc;
-
     private JLabel _restLabelDesc;
     private JLabel _restLabel;
     private JButton _okayButton;

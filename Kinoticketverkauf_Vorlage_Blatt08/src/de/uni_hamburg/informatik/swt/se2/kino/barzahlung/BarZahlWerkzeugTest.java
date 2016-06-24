@@ -7,12 +7,12 @@ public class BarZahlWerkzeugTest
 {
 
     @Test
-    private void berechneDifferenzTest()
+    public void berechneDifferenzTest()
     {
     }
 
     @Test
-    public void fuehreBarZahlungDurchTest(String bezahlterBetrag)
+    public void fuehreBarZahlungDurchTest()
     {
     }
 
@@ -22,12 +22,12 @@ public class BarZahlWerkzeugTest
     }
 
     @Test
-    private void istBetragGueltigTest()
+    public void istBetragGueltigTest()
     {
     }
 
     @Test
-    private void pruefeIstAllesBezahltTest()
+    public void pruefeIstAllesBezahltTest()
     {
     }
 }

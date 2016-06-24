@@ -17,12 +17,14 @@ public class BarZahlWerkzeug
     private Vorstellung _vorstellung;
     private int _bezahlterBetrag;
     private PlatzVerkaufsWerkzeug _platzVerkaufsWerkzeug;
+    private int _preis;
 
     public BarZahlWerkzeug(Vorstellung vorstellung,
-            PlatzVerkaufsWerkzeug platzVerkaufsWerkzeug)
+            PlatzVerkaufsWerkzeug platzVerkaufsWerkzeug, int preis)
     {
         _vorstellung = vorstellung;
         _platzVerkaufsWerkzeug = platzVerkaufsWerkzeug;
+        _preis = preis;
         createUI();
         registriereUIAktionen();
         _barzahlUi.setVisible(true);
@@ -30,12 +32,12 @@ public class BarZahlWerkzeug
 
     private int berechneDifferenz()
     {
-        return _vorstellung.getPreis() - _bezahlterBetrag;
+        return _preis - _bezahlterBetrag;
     }
 
     private void createUI()
     {
-        _barzahlUi = new BarZahlWerkzeugUI(_vorstellung.getPreis());
+        _barzahlUi = new BarZahlWerkzeugUI(_preis);
     }
 
     private void fuehreBarZahlungDurch(int betrag)

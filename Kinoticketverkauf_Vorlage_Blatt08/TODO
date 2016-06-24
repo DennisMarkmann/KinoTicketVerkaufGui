@@ -1,5 +1,3 @@
-- Logik programmieren
-- "Rollback Logik" nach erstem Okay, dann abbrechen -> Erst wirklich dann verkaufen
 - Asserts etc.
 - JUnit Tests
 - Anwendung testen (Alle Fälle auf dem Zettel)
