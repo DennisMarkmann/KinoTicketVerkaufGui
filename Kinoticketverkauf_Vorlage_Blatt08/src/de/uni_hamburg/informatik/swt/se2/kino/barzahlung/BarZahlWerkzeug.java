@@ -32,6 +32,8 @@ public class BarZahlWerkzeug
 
     private void fuehreBarZahlungDurch(int betrag)
     {
+        berechneDifferenz();
+        _barzahlUi.changeOkayButtonState(istAllesBezahlt());
     }
 
     private boolean istAllesBezahlt()
@@ -42,7 +44,7 @@ public class BarZahlWerkzeug
     /**
      * Fügt der UI die Funktionalität hinzu mit entsprechenden Listenern.
      */
-    private void registriereUIAktionen()
+    public void registriereUIAktionen()
     {
         _barzahlUi.getOkayButton()
             .addActionListener(new ActionListener()
