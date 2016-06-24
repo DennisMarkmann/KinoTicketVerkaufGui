@@ -1,5 +1,43 @@
+TODO:
+
 - Asserts etc.
 - JUnit Tests
 - Anwendung testen (Alle Fälle auf dem Zettel)
 - JavaDocs / Kommentare
 - UML anpassen
+
+-----------------
+
+Zum Üben:
+
+1. GUI-Normal: 
+Neue Klasse BarZahlWerkzeugUI_Neu oder ähnlich erstellen:
+Hier das GUI neu erstellen ohne GridBagLayout zu verwenden. 
+Das Werkzeug sollte im Normalfall nicht angepasst werden müssen (Bis auf den neuen GUI namen natürlich). 
+
+Benutzt stattdessen z.B.:
+BorderLayout
+   	BoxLayout
+  	CardLayout
+    FlowLayout
+    GridLayout
+    GroupLayout
+    SpringLayout
+
+Kleiner Einstieg zu den Layouts:
+https://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html
+
+2. GUI-JavaFX:
+Wer ein wenig mehr Zeit hat und etwas wirklich sinnvolles lernen will: Setzt das GUI einmal mit JavaFX um.
+Das wäre erheblich moderner (und schicker^^) als der Swing Kram den ich benutzt habe. 
+Dafür ist aber erstmal etwas Aufwand beim Einarbeiten nötig, denke ich.
+
+3. Logik & Listener:
+Hier könnt ihr natürlich einfach stumpf ein weiteres BarZahlWerkzeug_Neu o.ä. erstellen und nach Lust und Laune versuchen das Ganze selbst umzusetzen.
+Wer das ganze Projekt selbst machen will kann (Wie auch bereits in Whatsapp geschrieben) auch einen von mir zurückgebauten Branch wählen / auf den älteren Codestand wechseln.
+(Siehe Punkt 4)
+
+4. Branch auschecken (alter Code):
+Hierzu in die Gitview wechseln > Pullen > Aktuelles Projekt auswählen > branches > remote tracking aufklappen > Rechtsklick auf Origin/versiondm > Checkout
+Rückgängig machen genauso nur statt "Origin/versiondm", "Origin/master" wählen.
+Wer hingegen wie ich die Konsole bevorzugt: In der Konsole zum Pfad des Projektes im git Ordner navigieren > "git pull" > "git checkout versiondm"
