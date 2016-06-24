@@ -1,6 +1,8 @@
 package de.uni_hamburg.informatik.swt.se2.kino.barzahlung;
 
 import java.awt.Color;
+import java.awt.ComponentOrientation;
+import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,16 +19,27 @@ class BarZahlWerkzeugUI extends JFrame
     private JLabel _restLabel;
     private JButton _okayButton;
     private JButton _abbrechenButton;
+    private FlowLayout _layout;
 
     BarZahlWerkzeugUI(int preis)
     {
 
-        _preisLabel = new JLabel("" + preis);
-        _betragField = new JTextField();
-        _restLabel = new JLabel("" + preis);
+        this.setSize(300, 120);
+        _layout = new FlowLayout();
+        _preisLabel = new JLabel("Preis: " + preis);
+        _betragField = new JTextField(20);
+        _restLabel = new JLabel("Restbetrag: " + preis);
         _okayButton = new JButton("Okay");
         _okayButton.setEnabled(false);
         _abbrechenButton = new JButton("Abbrechen");
+        this.setLocationRelativeTo(null);
+        this.setLayout(_layout);
+        this.add(_preisLabel);
+        this.add(_restLabel);
+        this.add(_betragField);
+        this.add(_okayButton);
+        this.add(_abbrechenButton);
+        this.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
     }
 
     void aktualisiereRestBetrag(int restBetrag)
@@ -57,21 +70,48 @@ class BarZahlWerkzeugUI extends JFrame
     public int getBetragAsInt()
     {
         // TODO Auto-generated method stub
+        String input = _betragField.getText();
+        if (this.isInteger(input))
+        {
+            int foo = Integer.parseInt(input);
+            return foo;
+        }
+
         return 0;
     }
 
-    JTextField getBetragField()
+    protected JTextField getBetragField()
     {
         return _betragField;
     }
 
-    String getBetragText()
+    protected String getBetragText()
     {
         return _betragField.getText();
     }
 
-    JButton getOkayButton()
+    protected JButton getOkayButton()
     {
         return _okayButton;
+    }
+
+    private boolean isInteger(String s)
+    {
+
+        try
+        {
+            Integer.parseInt(s);
+        }
+        catch (NumberFormatException e)
+        {
+            return false;
+        }
+        catch (NullPointerException e)
+        {
+            return false;
+        }
+        // only got here if we didn't return false
+        //stackoverflow.com
+        return true;
     }
 }
