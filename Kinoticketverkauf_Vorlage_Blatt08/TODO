@@ -10,6 +10,12 @@ TODO:
 
 Zum Üben:
 
+0. Allgemein:
+
+Lest den gesamten Code im Barzahlungs Package wirklich komplett durch und versucht alles zu verstehen. 
+Andere Klassen habe ich so gut wie gar nicht angepasst (abgesehen vom Formatting und visibility fixes).
+Was dann unklar ist, kann ich Montag im TS / Discord oder Dienstag in der Übung gerne einmal mit euch durchgehen.
+
 1. GUI-Normal: 
 Neue Klasse BarZahlWerkzeugUI_Neu oder ähnlich erstellen:
 Hier das GUI neu erstellen ohne GridBagLayout zu verwenden. 
