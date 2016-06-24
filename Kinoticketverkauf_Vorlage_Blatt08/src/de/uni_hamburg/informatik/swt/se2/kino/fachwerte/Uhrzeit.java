@@ -31,7 +31,7 @@ public final class Uhrzeit implements Comparable<Uhrzeit>
     /**
      * Prüft, ob die übergebenen Stunden im Bereich 0..23 liegen und die übergebenen Minuten im Bereich 0..59
      */
-    static boolean istGueltig(int stunden, int minuten)
+    private static boolean istGueltig(int stunden, int minuten)
     {
         return (stunden >= 0) && (stunden < 24) && (minuten >= 0)
                 && (minuten < 60);

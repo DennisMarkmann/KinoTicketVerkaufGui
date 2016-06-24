@@ -95,7 +95,7 @@ class BarZahlWerkzeugUI extends JDialog
         int betrag = 0;
         try
         {
-            betrag = Integer.parseInt(getBetragText());
+            betrag = Integer.parseInt(_betragField.getText());
             return betrag;
         }
         catch (NumberFormatException e)
@@ -107,11 +107,6 @@ class BarZahlWerkzeugUI extends JDialog
     JTextField getBetragField()
     {
         return _betragField;
-    }
-
-    String getBetragText()
-    {
-        return _betragField.getText();
     }
 
     JButton getOkayButton()

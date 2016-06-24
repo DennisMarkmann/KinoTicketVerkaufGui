@@ -62,7 +62,7 @@ public class Tagesplan
      * @require v != null
      * @require die Vorstellung laeuft an dem Tag dieses Tagesplans
      */
-    public void fuegeVorstellungHinzu(Vorstellung v)
+    void fuegeVorstellungHinzu(Vorstellung v)
     {
         assert v != null : "Vorbedingung verletzt: v != null";
         assert v.getDatum()

@@ -188,7 +188,7 @@ public class Vorstellung
      *
      * @require platz != null
      */
-    public boolean hatPlatz(Platz platz)
+    boolean hatPlatz(Platz platz)
     {
         assert platz != null : "Vorbedingung verletzt: platz != null";
 
@@ -313,7 +313,7 @@ public class Vorstellung
      * @ensure !istStornierbar(platz)
      * @ensure istVerkaufbar(platz)
      */
-    public void stornierePlatz(Platz platz)
+    void stornierePlatz(Platz platz)
     {
         assert istStornierbar(
                 platz) : "Vorbedingung verletzt: istStornierbar(platz)";
@@ -357,7 +357,7 @@ public class Vorstellung
      * @ensure !istVerkaufbar(platz)
      * @ensure istStornierbar(platz)
      */
-    public void verkaufePlatz(Platz platz)
+    void verkaufePlatz(Platz platz)
     {
         assert istVerkaufbar(
                 platz) : "Vorbedingung verletzt: istVerkaufbar(platz)";
