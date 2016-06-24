@@ -92,9 +92,7 @@ public class PlatzVerkaufsWerkzeug
      */
     private void fuehreBarzahlungDurch()
     {
-        //TODO implement new stuff
-        new BarZahlWerkzeug(_vorstellung);
-        verkaufePlaetze(_vorstellung);
+        new BarZahlWerkzeug(_vorstellung, this);
     }
 
     /**
@@ -228,7 +226,7 @@ public class PlatzVerkaufsWerkzeug
     /**
      * Verkauft die ausgewählten Plaetze.
      */
-    private void verkaufePlaetze(Vorstellung vorstellung)
+    public void verkaufePlaetze(Vorstellung vorstellung)
     {
         Set<Platz> plaetze = _ui.getPlatzplan()
             .getAusgewaehltePlaetze();

@@ -8,6 +8,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Vorstellung;
+import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf.PlatzVerkaufsWerkzeug;
 
 public class BarZahlWerkzeug
 {
@@ -15,10 +16,13 @@ public class BarZahlWerkzeug
     private BarZahlWerkzeugUI _barzahlUi;
     private Vorstellung _vorstellung;
     private int _bezahlterBetrag;
+    private PlatzVerkaufsWerkzeug _platzVerkaufsWerkzeug;
 
-    public BarZahlWerkzeug(Vorstellung vorstellung)
+    public BarZahlWerkzeug(Vorstellung vorstellung,
+            PlatzVerkaufsWerkzeug platzVerkaufsWerkzeug)
     {
         _vorstellung = vorstellung;
+        _platzVerkaufsWerkzeug = platzVerkaufsWerkzeug;
         createUI();
         registriereUIAktionen();
         _barzahlUi.setVisible(true);
@@ -38,7 +42,7 @@ public class BarZahlWerkzeug
     {
         if (istAllesBezahlt())
         {
-            //TODO eigentlicher Verkauf
+            _platzVerkaufsWerkzeug.verkaufePlaetze(_vorstellung);
             _barzahlUi.dispose();
         }
         _bezahlterBetrag += betrag;
