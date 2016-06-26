@@ -18,7 +18,7 @@ import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf.PlatzVerkau
 public class BarZahlWerkzeug
 {
 
-    private BarZahlUI _barzahlUi;
+    private BarZahlWerkzeugUI _barzahlUi;
     private Vorstellung _vorstellung;
     private int _bezahlterBetrag;
     private PlatzVerkaufsWerkzeug _platzVerkaufsWerkzeug;
@@ -86,7 +86,7 @@ public class BarZahlWerkzeug
 
     private void createUI()
     {
-        _barzahlUi = new BarZahlUI(_preis);
+        _barzahlUi = new BarZahlWerkzeugUI(_preis);
     }
 
     /**

@@ -17,7 +17,7 @@ import javax.swing.JTextField;
  * @author SE2 Uebungsgruppe
  *
  */
-class BarZahlUI extends JDialog
+class BarZahlWerkzeugUI extends JDialog
 {
     private static final long serialVersionUID = 4057874294977034472L;
 
@@ -38,7 +38,7 @@ class BarZahlUI extends JDialog
      * @ensure preis > 0
      */
 
-    BarZahlUI(int preis)
+    BarZahlWerkzeugUI(int preis)
     {
         assert preis > 0 : "Vorbedingung verletzt: preis > 0";
         setLayoutOptions();
