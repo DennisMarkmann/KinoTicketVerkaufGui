@@ -9,6 +9,12 @@ import java.awt.event.KeyListener;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Vorstellung;
 import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf.PlatzVerkaufsWerkzeug;
 
+/**
+ * Werkzeug zur Bezahlung eines Betrages.
+ *
+ * @author SE2 Uebungsgruppe
+ *
+ */
 public class BarZahlWerkzeug
 {
 
@@ -18,6 +24,13 @@ public class BarZahlWerkzeug
     private PlatzVerkaufsWerkzeug _platzVerkaufsWerkzeug;
     private int _preis;
 
+    /**
+     * Konstruktor für BarZahlung.
+     *
+     * @param vorstellung die Vorstellung in der wir Karten kaufen möchten.
+     * @param platzVerkaufswerkeug Plätze die gekauft werden möchten und der zu zahlende Preis.
+     * @param preis gesamter Preis der zu Zahlen ist.
+     */
     public BarZahlWerkzeug(Vorstellung vorstellung,
             PlatzVerkaufsWerkzeug platzVerkaufsWerkzeug, int preis)
     {
@@ -29,16 +42,27 @@ public class BarZahlWerkzeug
         _barzahlUi.setVisible(true);
     }
 
+    /**
+     * Berechnet die Differenz zwischen dem Preis und dem gezahlten Betrag.
+     */
     private int berechneDifferenz()
     {
         return _preis - _bezahlterBetrag;
     }
 
+    /**
+     * Erstellt die BarzahlUI.
+     */
     private void createUI()
     {
         _barzahlUi = new BarZahlUI(_preis);
     }
 
+    /**
+     * Fügt die Möglichkeit hinzu den Preis der ausgewählten Plätze zu bezahlen.
+     *
+     * @param betrag Der Betrag der gezahlt wird.
+     */
     private void fuehreBarZahlungDurch(int betrag)
     {
         if (istAllesBezahlt())
@@ -58,6 +82,9 @@ public class BarZahlWerkzeug
         _barzahlUi.aktualisiereRestBetrag(berechneDifferenz());
     }
 
+    /**
+     * Prüft ob der Preis vollständig gezahlt wurde.
+     */
     private boolean istAllesBezahlt()
     {
         return berechneDifferenz() == 0;
