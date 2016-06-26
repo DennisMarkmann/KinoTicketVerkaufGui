@@ -12,7 +12,7 @@ import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf.PlatzVerkau
 public class BarZahlWerkzeug
 {
 
-    private BarZahlWerkzeugUI _barzahlUi;
+    private BarZahlUI _barzahlUi;
     private Vorstellung _vorstellung;
     private int _bezahlterBetrag;
     private PlatzVerkaufsWerkzeug _platzVerkaufsWerkzeug;
@@ -36,7 +36,7 @@ public class BarZahlWerkzeug
 
     private void createUI()
     {
-        _barzahlUi = new BarZahlWerkzeugUI(_preis);
+        _barzahlUi = new BarZahlUI(_preis);
     }
 
     private void fuehreBarZahlungDurch(int betrag)
@@ -94,13 +94,13 @@ public class BarZahlWerkzeug
 
                 private boolean istBetragGueltig()
                 {
-                    if (berechneDifferenz() != 0 && _barzahlUi.getBetragField()
+                    if (istAllesBezahlt() || (_barzahlUi.getBetragField()
                         .getText()
-                        .length() == 0 || _barzahlUi.getBetragAsInt() == 0)
+                        .length() > 0 && _barzahlUi.getBetragAsInt() != 0))
                     {
-                        return false;
+                        return true;
                     }
-                    return true;
+                    return false;
                 }
 
                 @Override
@@ -121,7 +121,6 @@ public class BarZahlWerkzeug
                     {
                         _barzahlUi.dispose();
                     }
-
                 }
 
                 @Override
