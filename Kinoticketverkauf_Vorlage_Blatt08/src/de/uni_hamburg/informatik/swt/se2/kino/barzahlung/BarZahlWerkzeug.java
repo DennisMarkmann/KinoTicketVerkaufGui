@@ -9,6 +9,12 @@ import java.awt.event.KeyListener;
 import de.uni_hamburg.informatik.swt.se2.kino.materialien.Vorstellung;
 import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.platzverkauf.PlatzVerkaufsWerkzeug;
 
+/**
+ * Werkzeug zur Unterstuetzung bei der Bezahlung eines Betrages.
+ *
+ * @author SE2 Uebungsgruppe
+ */
+
 public class BarZahlWerkzeug
 {
 
@@ -17,6 +23,14 @@ public class BarZahlWerkzeug
     private int _bezahlterBetrag;
     private PlatzVerkaufsWerkzeug _platzVerkaufsWerkzeug;
     private int _preis;
+
+    /**
+     * Konstruktor ueber den das dazu gehoerige UI erzeugt wird.
+     *
+     * @param vorstellung zu der die Plaetze verkauft werden sollen.
+     * @param platzVerkaufsWerkzeug das die Plaetze verkaufen soll, sobald die Bezahlung abgeschlossen ist.
+     * @param preis der insgesamt zu zahlende Preis.
+     */
 
     public BarZahlWerkzeug(Vorstellung vorstellung,
             PlatzVerkaufsWerkzeug platzVerkaufsWerkzeug, int preis)
@@ -29,15 +43,49 @@ public class BarZahlWerkzeug
         _barzahlUi.setVisible(true);
     }
 
-    private int berechneDifferenz()
+    /**
+     * Aktualisiert den bereits bezahlten Betrag.
+     *
+     * @param betrag der bereits bezahlt wurde.
+     */
+
+    private void aktualisiereBezahlterBetrag(int betrag)
+    {
+        if (berechnePreisDifferenz() > 0)
+        {
+            _bezahlterBetrag += betrag;
+        }
+        else
+        {
+            _bezahlterBetrag -= betrag;
+        }
+    }
+
+    /**
+     * Methode zur Berechnung der Differenz zwischen dem Gesamtpreis und dem bereits bezahlten Betrag.
+     *
+     * @return die noch vorhandene Differenz.
+     */
+
+    private int berechnePreisDifferenz()
     {
         return _preis - _bezahlterBetrag;
     }
+
+    /**
+     * Erstellt das UI.
+     */
 
     private void createUI()
     {
         _barzahlUi = new BarZahlUI(_preis);
     }
+
+    /**
+     * Methode zur Durchfuehrung der eigentlichen Bezahlung. Verkauft auch die Plätze sobald die Bezahlung komplett ist.
+     *
+     * @param betrag der bezahlt wurde.
+     */
 
     private void fuehreBarZahlungDurch(int betrag)
     {
@@ -46,21 +94,20 @@ public class BarZahlWerkzeug
             _platzVerkaufsWerkzeug.verkaufePlaetze(_vorstellung);
             _barzahlUi.dispose();
         }
-        if (berechneDifferenz() > 0)
-        {
-            _bezahlterBetrag += betrag;
-        }
-        else
-        {
-            _bezahlterBetrag -= betrag;
-        }
+        aktualisiereBezahlterBetrag(betrag);
         _barzahlUi.clearBetragField();
-        _barzahlUi.aktualisiereRestBetrag(berechneDifferenz());
+        _barzahlUi.aktualisiereRestBetrag(berechnePreisDifferenz());
     }
+
+    /**
+     * Prueft ob die Preis Differenz gleich 0 ist.
+     *
+     * @return boolean ist Differenz = 0
+     */
 
     private boolean istAllesBezahlt()
     {
-        return berechneDifferenz() == 0;
+        return berechnePreisDifferenz() == 0;
     }
 
     /**
