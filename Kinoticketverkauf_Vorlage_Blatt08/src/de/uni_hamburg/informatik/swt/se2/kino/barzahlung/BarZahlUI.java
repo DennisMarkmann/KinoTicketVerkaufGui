@@ -35,10 +35,12 @@ class BarZahlUI extends JDialog
      * Konstruktor über den das UI erstellt wird.
      *
      * @param preis gesamter Preis der im Preislabel angezeigt werden soll.
+     * @ensure preis > 0
      */
 
     BarZahlUI(int preis)
     {
+        assert preis > 0 : "Vorbedingung verletzt: preis > 0";
         setLayoutOptions();
         initializeUiObjects(preis);
         addObjectsToFrame();
@@ -89,9 +91,11 @@ class BarZahlUI extends JDialog
      * Aendert die Hintergrundfarbe des Betrag Feldes auf die uebergebene.
      *
      * @param color die Hintergrundfarbe die das Betragsfeld annehmen soll.
+     * @ensure color != null
      */
     void changeBetragFieldColor(Color color)
     {
+        assert color != null : "Vorbedingung verletzt: color != null";
         _betragField.setBackground(color);
     }
 

@@ -30,11 +30,19 @@ public class BarZahlWerkzeug
      * @param vorstellung zu der die Plaetze verkauft werden sollen.
      * @param platzVerkaufsWerkzeug das die Plaetze verkaufen soll, sobald die Bezahlung abgeschlossen ist.
      * @param preis der insgesamt zu zahlende Preis.
+     *
+     * @ensure vorstellung != null
+     * @ensure platzVerkaufsWerkzeug != null
+     * @ensure preis > 0
      */
 
     public BarZahlWerkzeug(Vorstellung vorstellung,
             PlatzVerkaufsWerkzeug platzVerkaufsWerkzeug, int preis)
     {
+        assert vorstellung != null : "Vorbedingung verletzt: vorstellung != null ";
+        assert platzVerkaufsWerkzeug != null : "Vorbedingung verletzt: platzVerkaufsWerkzeug != null ";
+        assert preis > 0 : "Vorbedingung verletzt: preis > 0";
+
         _vorstellung = vorstellung;
         _platzVerkaufsWerkzeug = platzVerkaufsWerkzeug;
         _preis = preis;
