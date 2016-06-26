@@ -139,6 +139,11 @@ public class BarZahlWerkzeug
             .addKeyListener(new KeyListener()
             {
 
+                /**
+                 * Prueft ob der im Betragsfeld eingetragene Wert gueltig ist oder nicht.
+                 *
+                 * @return gueltig = true, ungueltig = false
+                 */
                 private boolean istBetragGueltig()
                 {
                     if (istAllesBezahlt() || (_barzahlUi.getBetragField()
@@ -150,11 +155,21 @@ public class BarZahlWerkzeug
                     return false;
                 }
 
+                /**
+                 * Tut nichts.
+                 */
+
                 @Override
                 public void keyPressed(KeyEvent e)
                 {
                     //nothing to do here
                 }
+
+                /**
+                 * Enter + Eintrag in Betragsfeld ist valide -> BarZahlung wird durchgeführt.
+                 * Esc = UI wird geschlossen und der Bezahlvorgang abgebrochen.
+                 *
+                 */
 
                 @Override
                 public void keyReleased(KeyEvent e)
@@ -170,12 +185,20 @@ public class BarZahlWerkzeug
                     }
                 }
 
+                /**
+                 * Tut nichts.
+                 */
+
                 @Override
                 public void keyTyped(KeyEvent e)
                 {
                     //nothing to do here
                 }
 
+                /**
+                 * Prueft ob der Eintrag im Betragsfeld gueltig ist oder nicht. Faerbt das Feld rot wenn nicht, weiß wenn doch. Deaktiviert oder aktiviert den Okay Button entsprechend.
+                 * @return
+                 */
                 private boolean validate()
                 {
                     if (istBetragGueltig())
