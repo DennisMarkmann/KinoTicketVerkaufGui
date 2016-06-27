@@ -36,8 +36,7 @@ public class BarZahlWerkzeug
      * @ensure preis > 0
      */
 
-    public BarZahlWerkzeug(Vorstellung vorstellung,
-            PlatzVerkaufsWerkzeug platzVerkaufsWerkzeug, int preis)
+    public BarZahlWerkzeug(Vorstellung vorstellung, PlatzVerkaufsWerkzeug platzVerkaufsWerkzeug, int preis)
     {
         assert vorstellung != null : "Vorbedingung verletzt: vorstellung != null ";
         assert platzVerkaufsWerkzeug != null : "Vorbedingung verletzt: platzVerkaufsWerkzeug != null ";
@@ -54,7 +53,7 @@ public class BarZahlWerkzeug
     /**
      * Aktualisiert den bereits bezahlten Betrag.
      *
-     * @param betrag der bereits bezahlt wurde.
+     * @param Betrag der bereits bezahlt wurde.
      */
 
     private void aktualisiereBezahlterBetrag(int betrag)
@@ -205,7 +204,8 @@ public class BarZahlWerkzeug
 
                 /**
                  * Prueft ob der Eintrag im Betragsfeld gueltig ist oder nicht. Faerbt das Feld rot wenn nicht, weiß wenn doch. Deaktiviert oder aktiviert den Okay Button entsprechend.
-                 * @return
+                 *
+                 * @return boolean ob der Betrag gueltig ist oder nicht.
                  */
                 private boolean validate()
                 {
