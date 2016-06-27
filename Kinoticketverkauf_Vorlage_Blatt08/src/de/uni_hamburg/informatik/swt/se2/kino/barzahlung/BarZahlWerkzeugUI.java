@@ -44,6 +44,7 @@ class BarZahlWerkzeugUI extends JDialog
         setLayoutOptions();
         initializeUiObjects(preis);
         addObjectsToFrame();
+        addTooltips();
     }
 
     /**
@@ -54,8 +55,7 @@ class BarZahlWerkzeugUI extends JDialog
      * @param gridyValue die y-Koordinate an der die Komponente platziert werden soll.
      */
 
-    private void addComponent(final Component component, final int gridxValue,
-            final int gridyValue)
+    private void addComponent(final Component component, final int gridxValue, final int gridyValue)
     {
         _gridBagConstraints.gridx = gridxValue;
         _gridBagConstraints.gridy = gridyValue;
@@ -75,6 +75,19 @@ class BarZahlWerkzeugUI extends JDialog
         addComponent(_betragField, 1, 2);
         addComponent(_okayButton, 0, 3);
         addComponent(_abbrechenButton, 1, 3);
+    }
+
+    /**
+     * Fuegt den UI Objekten tooltips hinzu.
+     */
+    private void addTooltips()
+    {
+        _preisLabel.setToolTipText("Der insgesamt zu zahlende Betrag in Cent.");
+        _betragField.setToolTipText("Der vom Kunden bezahlte oder an ihn zurück gegebene Betrag in Cent.");
+        _restLabel.setToolTipText("Der noch verbleibende zu zahlende Betrag in Cent.");
+        _okayButton.setToolTipText(
+                "Bestätigt die Zahlung des angegebenen Betrages. Schließt den Verkauf ab sobald die komplette Summe bezahlt wurde.");
+        _abbrechenButton.setToolTipText("Bricht die Barzahlung ab. Es kommt kein Patzverkauf zustande.");
     }
 
     /**
