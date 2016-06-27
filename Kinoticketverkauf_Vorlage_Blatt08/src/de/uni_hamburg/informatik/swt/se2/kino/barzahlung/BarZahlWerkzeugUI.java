@@ -69,10 +69,10 @@ class BarZahlWerkzeugUI extends JDialog
     {
         addComponent(_preisLabelDesc, 0, 0);
         addComponent(_preisLabel, 1, 0);
-        addComponent(_betragLabelDesc, 0, 1);
-        addComponent(_betragField, 1, 1);
-        addComponent(_restLabelDesc, 0, 2);
-        addComponent(_restLabel, 1, 2);
+        addComponent(_restLabelDesc, 0, 1);
+        addComponent(_restLabel, 1, 1);
+        addComponent(_betragLabelDesc, 0, 2);
+        addComponent(_betragField, 1, 2);
         addComponent(_okayButton, 0, 3);
         addComponent(_abbrechenButton, 1, 3);
     }
@@ -84,7 +84,7 @@ class BarZahlWerkzeugUI extends JDialog
      */
     void aktualisiereRestBetrag(int restBetrag)
     {
-        this._restLabel.setText("" + restBetrag);
+        this._restLabel.setText(restBetrag + " Cent");
     }
 
     /**
@@ -177,11 +177,11 @@ class BarZahlWerkzeugUI extends JDialog
     private void initializeUiObjects(int preis)
     {
         _preisLabelDesc = new JLabel("Preis:");
-        _preisLabel = new JLabel("" + preis);
+        _preisLabel = new JLabel(preis + " Cent");
         _betragLabelDesc = new JLabel("Betrag:");
         _betragField = new JTextField();
         _restLabelDesc = new JLabel("Rest:");
-        _restLabel = new JLabel("" + preis);
+        _restLabel = new JLabel(preis + " Cent");
         _okayButton = new JButton("Okay");
         _okayButton.setEnabled(false);
         _abbrechenButton = new JButton("Abbrechen");
@@ -193,6 +193,7 @@ class BarZahlWerkzeugUI extends JDialog
 
     private void setLayoutOptions()
     {
+        this.setTitle("Barzahlung");
         this.setSize(300, 200);
         this.setModal(true);
         this.setLocationRelativeTo(null);
