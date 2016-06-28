@@ -35,7 +35,7 @@ class BarZahlWerkzeugUI extends JDialog
      * Konstruktor über den das UI erstellt wird.
      *
      * @param preis gesamter Preis der im Preislabel angezeigt werden soll.
-     * @ensure preis > 0
+     * @require preis > 0
      */
 
     BarZahlWerkzeugUI(int preis)
@@ -103,7 +103,7 @@ class BarZahlWerkzeugUI extends JDialog
      * Aendert die Hintergrundfarbe des Betrag Feldes auf die uebergebene.
      *
      * @param color die Hintergrundfarbe die das Betragsfeld annehmen soll.
-     * @ensure color != null
+     * @require color != null
      */
     void changeBetragFieldColor(Color color)
     {

@@ -31,9 +31,9 @@ public class BarZahlWerkzeug
      * @param platzVerkaufsWerkzeug das die Plaetze verkaufen soll, sobald die Bezahlung abgeschlossen ist.
      * @param preis der insgesamt zu zahlende Preis.
      *
-     * @ensure vorstellung != null
-     * @ensure platzVerkaufsWerkzeug != null
-     * @ensure preis > 0
+     * @require vorstellung != null
+     * @require platzVerkaufsWerkzeug != null
+     * @require preis > 0
      */
 
     public BarZahlWerkzeug(Vorstellung vorstellung, PlatzVerkaufsWerkzeug platzVerkaufsWerkzeug, int preis)
