@@ -83,8 +83,7 @@ class BarZahlWerkzeugUI extends JDialog
     private void addTooltips()
     {
         _preisLabel.setToolTipText("Der insgesamt zu zahlende Betrag in Cent.");
-        _betragField.setToolTipText("Der vom Kunden bezahlte oder an ihn zurück gegebene Betrag in Cent.");
-        _restLabel.setToolTipText("Der noch verbleibende zu zahlende Betrag in Cent.");
+        this.changeRestLabelDescription(WERT.POSITIV);
         _okayButton.setToolTipText(
                 "Bestätigt die Zahlung des angegebenen Betrages. Schließt den Verkauf ab sobald die komplette Summe bezahlt wurde.");
         _abbrechenButton.setToolTipText("Bricht die Barzahlung ab. Es kommt kein Patzverkauf zustande.");
@@ -120,6 +119,23 @@ class BarZahlWerkzeugUI extends JDialog
     void changeOkayButtonState(boolean enabled)
     {
         _okayButton.setEnabled(enabled);
+    }
+
+    void changeRestLabelDescription(WERT wert)
+    {
+        if (wert == WERT.POSITIV)
+        {
+            _restLabel.setToolTipText("Der noch verbleibende zu zahlende Betrag in Cent.");
+            _restLabelDesc.setText("Rest:");
+            _betragField.setToolTipText("Der vom Kunden bezahlte Betrag in Cent.");
+        }
+        else
+        {
+            _restLabel.setToolTipText("Der zurückzugebende Betrag in Cent.");
+            _restLabelDesc.setText("Rückgabegeld:");
+            _betragField.setToolTipText("Der an den Kunden zurückzugegebene Betrag in Cent.");
+        }
+
     }
 
     /**
@@ -214,5 +230,6 @@ class BarZahlWerkzeugUI extends JDialog
         _gridBagConstraints.fill = GridBagConstraints.BOTH;
         _gridBagConstraints.insets = new Insets(5, 5, 5, 5);
         _gridBagConstraints.weightx = 2;
+        this.setResizable(false);
     }
 }

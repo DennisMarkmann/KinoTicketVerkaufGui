@@ -79,6 +79,18 @@ public class BarZahlWerkzeug
         return _preis - _bezahlterBetrag;
     }
 
+    private void changeRestLabelDescription()
+    {
+        if (berechnePreisDifferenz() > 0)
+        {
+            _barzahlUi.changeRestLabelDescription(WERT.POSITIV);
+        }
+        else
+        {
+            _barzahlUi.changeRestLabelDescription(WERT.NEGATIV);
+        }
+    }
+
     /**
      * Erstellt das UI.
      */
@@ -104,6 +116,8 @@ public class BarZahlWerkzeug
         aktualisiereBezahlterBetrag(betrag);
         _barzahlUi.clearBetragField();
         _barzahlUi.aktualisiereRestBetrag(berechnePreisDifferenz());
+        changeRestLabelDescription();
+
     }
 
     /**
@@ -155,7 +169,7 @@ public class BarZahlWerkzeug
                 {
                     if (istAllesBezahlt() || (_barzahlUi.getBetragField()
                         .getText()
-                        .length() > 0 && _barzahlUi.getBetragAsInt() != 0))
+                        .length() > 0 && _barzahlUi.getBetragAsInt() > 0))
                     {
                         return true;
                     }
@@ -181,7 +195,7 @@ public class BarZahlWerkzeug
                 @Override
                 public void keyReleased(KeyEvent e)
                 {
-                    if (e.getKeyCode() == KeyEvent.VK_ENTER & validate())
+                    if (validate() && e.getKeyCode() == KeyEvent.VK_ENTER)
 
                     {
                         fuehreBarZahlungDurch(_barzahlUi.getBetragAsInt());
