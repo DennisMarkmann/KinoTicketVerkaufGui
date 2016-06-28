@@ -29,7 +29,7 @@ class BarZahlWerkzeugUI extends JDialog
     private JLabel _restLabel;
     private JButton _okayButton;
     private JButton _abbrechenButton;
-    private final GridBagConstraints _gridBagConstraints = new GridBagConstraints();
+    private GridBagConstraints _gridBagConstraints;
 
     /**
      * Konstruktor über den das UI erstellt wird.
@@ -205,6 +205,7 @@ class BarZahlWerkzeugUI extends JDialog
 
     private void initializeUiObjects(int preis)
     {
+
         _preisLabelDesc = new JLabel("Preis:");
         _preisLabel = new JLabel(preis + " Cent");
         _betragLabelDesc = new JLabel("Betrag:");
@@ -222,6 +223,7 @@ class BarZahlWerkzeugUI extends JDialog
 
     private void setLayoutOptions()
     {
+        _gridBagConstraints = new GridBagConstraints();
         this.setTitle("Barzahlung");
         this.setSize(300, 200);
         this.setModal(true);
